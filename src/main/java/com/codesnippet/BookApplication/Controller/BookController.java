@@ -3,6 +3,7 @@ package com.codesnippet.BookApplication.Controller;
 import com.codesnippet.BookApplication.Entity.Book;
 import com.codesnippet.BookApplication.Service.BookService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,6 +17,7 @@ public class BookController {
     }
 
     @PostMapping("/addBook")
+    @Transactional
     public ResponseEntity<Book> addBook(@RequestBody Book book)
     {
         Book savebook=bookService.addBook(book);
