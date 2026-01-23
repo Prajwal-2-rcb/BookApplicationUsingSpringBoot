@@ -3,6 +3,7 @@ package com.codesnippet.BookApplication.Service;
 import com.codesnippet.BookApplication.Entity.Book;
 import com.codesnippet.BookApplication.Repository.BookRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +17,7 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    @Transactional(propagation = Propagation.NEVER)
+    @Transactional(propagation = Propagation.NEVER,isolation = Isolation.READ_COMMITTED)
     //Transaction is applicable only for public methods
     //If the method which is calling this method if it has  transactional annotation then
     //this method will join same transaction or else it will create a new .
