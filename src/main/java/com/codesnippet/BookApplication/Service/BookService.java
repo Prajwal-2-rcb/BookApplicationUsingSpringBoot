@@ -16,7 +16,7 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    @Transactional(propagation = Propagation.NOT_SUPPORTED)
+    @Transactional(propagation = Propagation.NEVER)
     //Transaction is applicable only for public methods
     //If the method which is calling this method if it has  transactional annotation then
     //this method will join same transaction or else it will create a new .
